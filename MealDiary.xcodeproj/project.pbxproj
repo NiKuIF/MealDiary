@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84AC06681D689F430020D11A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC06671D689F430020D11A /* CustomCell.swift */; };
 		84DAB7FA1D66FD78009E882A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DAB7F91D66FD78009E882A /* AppDelegate.swift */; };
 		84DAB7FC1D66FD78009E882A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DAB7FB1D66FD78009E882A /* ViewController.swift */; };
 		84DAB7FF1D66FD78009E882A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DAB7FD1D66FD78009E882A /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84AC06671D689F430020D11A /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCell.swift; path = ../CustomCell.swift; sourceTree = "<group>"; };
 		84DAB7F61D66FD78009E882A /* MealDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DAB7F91D66FD78009E882A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DAB7FB1D66FD78009E882A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		84DAB7F81D66FD78009E882A /* MealDiary */ = {
 			isa = PBXGroup;
 			children = (
+				84AC06671D689F430020D11A /* CustomCell.swift */,
 				84DAB7F91D66FD78009E882A /* AppDelegate.swift */,
 				84DAB7FB1D66FD78009E882A /* ViewController.swift */,
 				84DAB7FD1D66FD78009E882A /* Main.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				84DAB8021D66FD78009E882A /* MealDiary.xcdatamodeld in Sources */,
 				84DAB7FC1D66FD78009E882A /* ViewController.swift in Sources */,
+				84AC06681D689F430020D11A /* CustomCell.swift in Sources */,
 				84DAB7FA1D66FD78009E882A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +490,7 @@
 				84DAB8231D66FD78009E882A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84DAB8241D66FD78009E882A /* Build configuration list for PBXNativeTarget "MealDiaryTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				84DAB8261D66FD78009E882A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84DAB8271D66FD78009E882A /* Build configuration list for PBXNativeTarget "MealDiaryUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +508,7 @@
 				84DAB8291D66FD78009E882A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
