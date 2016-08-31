@@ -1,69 +1,242 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ccb-Lz-sw3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--MealDiary-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="VDd-qo-r7H">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="G1L-BL-th9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rfQ-DI-2Dy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="I5D-r8-CJw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="sbY-zK-YWt" kind="relationship" relationship="rootViewController" id="XSg-ZJ-wIz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsN-If-63k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="-39"/>
+        </scene>
+        <!--Take a photo-->
+        <scene sceneID="218-pD-ilw">
+            <objects>
+                <viewController storyboardIdentifier="TitleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sbY-zK-YWt" customClass="TitleViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="4Pn-Gk-1uU"/>
+                        <viewControllerLayoutGuide type="bottom" id="dyh-tZ-lth"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="qba-qG-Yub">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="take_photo" translatesAutoresizingMaskIntoConstraints="NO" id="u9c-2V-zIF">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="u9c-2V-zIF" secondAttribute="trailing" constant="10" id="5py-CW-OmH"/>
+                            <constraint firstItem="u9c-2V-zIF" firstAttribute="top" secondItem="4Pn-Gk-1uU" secondAttribute="bottom" constant="30" id="cpZ-M7-G7X"/>
+                            <constraint firstItem="dyh-tZ-lth" firstAttribute="top" secondItem="u9c-2V-zIF" secondAttribute="bottom" constant="10" id="n6X-WU-SNF">
+                                <variation key="widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="u9c-2V-zIF" firstAttribute="leading" secondItem="qba-qG-Yub" secondAttribute="leadingMargin" constant="10" id="q0F-Wo-RhQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="u9c-2V-zIF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5py-CW-OmH"/>
+                                <exclude reference="cpZ-M7-G7X"/>
+                                <exclude reference="q0F-Wo-RhQ"/>
+                                <exclude reference="n6X-WU-SNF"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="u9c-2V-zIF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5py-CW-OmH"/>
+                                <include reference="cpZ-M7-G7X"/>
+                                <include reference="q0F-Wo-RhQ"/>
+                                <include reference="n6X-WU-SNF"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Take a photo" id="MEG-oX-e86">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="dbJ-Tf-O3K"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rvn-7V-Qxt">
+                            <connections>
+                                <action selector="cancelAddItem:" destination="sbY-zK-YWt" id="RyJ-uM-weM"/>
+                                <segue destination="ccb-Lz-sw3" kind="show" identifier="back_to_menu" id="qvL-Mo-C6d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="image" destination="u9c-2V-zIF" id="k6p-pT-19J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="do1-hv-e9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Veu-R1-sHB"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="-42"/>
+        </scene>
+        <!--MailDiary-->
+        <scene sceneID="9dL-W9-P4E">
+            <objects>
+                <tableViewController storyboardIdentifier="rootTableViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Fz-kU-3sB" customClass="rootTableViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="pte-Rb-zRF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="7Qd-7E-8mw" rowHeight="100" style="IBUITableViewCellStyleDefault" id="DWv-NO-wK4">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DWv-NO-wK4" id="eSg-Vi-gu1">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Qd-7E-8mw">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="6ja-t8-C0G" kind="push" identifier="cell_click" id="nTk-k8-9Uz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7Fz-kU-3sB" id="X5U-2z-yuV"/>
+                            <outlet property="delegate" destination="7Fz-kU-3sB" id="uFE-RL-JmQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="MailDiary" id="AXN-XR-WY7">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="Tg1-dM-vWe"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Gx8-lQ-9gD">
+                            <connections>
+                                <segue destination="G1L-BL-th9" kind="show" id="uii-g2-7CT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="pte-Rb-zRF" id="bZK-xs-dXf"/>
+                        <outlet property="tableview" destination="pte-Rb-zRF" id="uj4-cA-kgC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTX-Jt-FUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1572" y="866"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="8Jm-CP-ICl">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6ja-t8-C0G" customClass="DetailViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="slH-Yl-KBU"/>
+                        <viewControllerLayoutGuide type="bottom" id="vk2-5e-ZLI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7UV-ev-e1P">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KxK-y6-hdg">
-                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OKo-S9-Aef">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="szx-rg-bOe">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="fpA-lx-hm5" customClass="CustomCell" customModule="MealDiary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpA-lx-hm5" id="QV3-6E-koW">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rg-Ty-tn7">
-                                                    <rect key="frame" x="228" y="11" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6I-5x-Tym">
-                                                    <rect key="frame" x="8" y="0.0" width="128" height="43.5"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="image" destination="W6I-5x-Tym" id="X5b-zD-qv7"/>
-                                            <outlet property="name" destination="2Rg-Ty-tn7" id="aXA-Tm-feU"/>
-                                            <outlet property="photo" destination="W6I-5x-Tym" id="5Tb-I5-FIq"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="M3v-tt-RHC"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RDN-39-07m"/>
-                                </connections>
-                            </tableView>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="184" width="340" height="100"/>
+                                </variation>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OKo-S9-Aef" firstAttribute="top" secondItem="7UV-ev-e1P" secondAttribute="topMargin" constant="300" id="8et-pW-6yM"/>
+                            <constraint firstItem="vk2-5e-ZLI" firstAttribute="top" secondItem="OKo-S9-Aef" secondAttribute="bottom" constant="10" id="Rdn-AC-9GC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OKo-S9-Aef" secondAttribute="trailing" constant="10" id="W95-aA-HIh"/>
+                            <constraint firstItem="OKo-S9-Aef" firstAttribute="leading" secondItem="7UV-ev-e1P" secondAttribute="leadingMargin" constant="10" id="yUS-Me-BQ1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="OKo-S9-Aef"/>
+                                <exclude reference="szx-rg-bOe"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8et-pW-6yM"/>
+                                <exclude reference="W95-aA-HIh"/>
+                                <exclude reference="yUS-Me-BQ1"/>
+                                <exclude reference="Rdn-AC-9GC"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="OKo-S9-Aef"/>
+                                <include reference="szx-rg-bOe"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8et-pW-6yM"/>
+                                <include reference="W95-aA-HIh"/>
+                                <include reference="yUS-Me-BQ1"/>
+                                <include reference="Rdn-AC-9GC"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="MealDiary" id="Kqc-6h-FMh">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="jdw-zS-5rc"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="6y1-yA-HPe"/>
                     <connections>
-                        <outlet property="tableView" destination="KxK-y6-hdg" id="kfz-7g-NtB"/>
+                        <outlet property="image" destination="OKo-S9-Aef" id="mHj-fT-CcJ"/>
+                        <outlet property="name" destination="szx-rg-bOe" id="U73-Ug-GqE"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpF-EA-hyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="898"/>
+            <point key="canvasLocation" x="2559" y="866"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IQB-Vc-pCg">
+            <objects>
+                <navigationController id="ccb-Lz-sw3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fr2-fH-0PB"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LOH-hv-vCV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="InI-Dr-8Gs">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="7Fz-kU-3sB" kind="relationship" relationship="rootViewController" id="BZC-Zk-uCn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uX6-2e-fOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="642" y="866"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="take_photo" width="768" height="1024"/>
+    </resources>
 </document>
