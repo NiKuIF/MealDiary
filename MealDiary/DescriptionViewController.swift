@@ -1,5 +1,5 @@
 //
-//  TitleViewController.swift
+//  DescriptionViewController.swift
 //  MealDiary
 //
 //  Created by admin on 01/09/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleViewController: UIViewController {
+class DescriptionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
