@@ -11,17 +11,19 @@ import UIKit
 class DetailViewController: UIViewController {
 
     
-    @IBOutlet weak var name: UITextView!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var mealImageView: UIImageView!
     
-    var name_text: String?
-    var image_name: String?
+    var title_text: String?
+    var description_text: String?
+    var image_name_text: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("in viewDidLoad : name : \(name_text) imagename: \(image_name)\n")
-        name.text = name_text
-        image.image = UIImage(named: image_name!)
+        titleLabel.text = title_text
+        descriptionTextView.text = description_text
+        mealImageView.image = UIImage(named: image_name_text!)
         // Do any additional setup after loading the view.
     }
 

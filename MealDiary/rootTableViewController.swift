@@ -10,7 +10,12 @@ import UIKit
 
 class rootTableViewController: UITableViewController{
 
-    var Titles : [String] = [String](arrayLiteral: "StefanStefanStefanStefanStefanStefanStefanStefanStefanStefan", "Julia", "Struppi", "Schnurli")
+    var Titles : [String] = [String](arrayLiteral: "Stefan", "Julia", "Struppi", "Schnurli")
+    var Descriptions : [String] = [String](arrayLiteral:
+        "some info",
+        "some infosome infosome infosome infosome infosome infosome infosome infosome info",
+        "some infosome info",
+        "some infosome infosome infosome infosome info")
     var Image : String = String("stefan.jpg")
     
     @IBOutlet var tableview: UITableView!
@@ -101,8 +106,9 @@ class rootTableViewController: UITableViewController{
             print("prepare segue \(indexPath?.row)\n")
             
             let dest_vc : DetailViewController = segue.destinationViewController as! DetailViewController
-            dest_vc.name_text = Titles[(indexPath?.row)!]
-            dest_vc.image_name = Image
+            dest_vc.title_text = Titles[(indexPath?.row)!]
+            dest_vc.description_text = Descriptions[(indexPath?.row)!]
+            dest_vc.image_name_text = Image
         }
         
     }
