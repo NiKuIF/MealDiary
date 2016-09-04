@@ -25,13 +25,37 @@ class DetailViewController: UIViewController {
         descriptionTextView.text = description_text
         mealImageView.image = UIImage(named: image_name_text!)
         // Do any additional setup after loading the view.
-    }
+    }					
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func editTitle(sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Edit title", message: "Enter new title", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveTitleText(alert.textFields![0].text!)}))
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter text:"
+        })
+        
+        self.presentViewController(alert, animated: true, completion:{
+            alert.view.superview?.userInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+    }
+    
+    func changeActiveTitleText(new_title: String)
+    {
+        print("change title to : \(new_title)")
+        titleLabel.text = new_title
+    }
+    
+    func alertControllerBackgroundTapped()
+    {
+        print("background tap")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
