@@ -9,6 +9,10 @@
 import UIKit
 
 class rootTableViewController: UITableViewController{
+    
+    let managedObjectContext =
+        (UIApplication.sharedApplication().delegate
+            as! AppDelegate).managedObjectContext
 
     var Titles : [String] = [String](arrayLiteral: "Stefan", "Julia", "Struppi", "Schnurli")
     var Descriptions : [String] = [String](arrayLiteral:

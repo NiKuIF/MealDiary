@@ -7,9 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class DescriptionViewController: UIViewController {
 
+    @IBAction func create_item_btn_click(sender: UIBarButtonItem) {
+        let managedObjectContext =
+            (UIApplication.sharedApplication().delegate
+                as! AppDelegate).managedObjectContext
+        
+        let entityDescription =
+            NSEntityDescription.entityForName("Meals",
+                                              inManagedObjectContext: managedObjectContext)
+        
+        let meal = Meals(entity: entityDescription!,
+                               insertIntoManagedObjectContext: managedObjectContext)
+        
+        meal.meal_title = "test"
+        meal.meal_description = "asdfasdfasfasdfasdfasfasfddafasdf"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

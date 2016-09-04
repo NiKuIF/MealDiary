@@ -178,6 +178,7 @@
                     <navigationItem key="navigationItem" title="Add a description" id="PD1-75-hl1">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ULB-4u-EVX">
                             <connections>
+                                <action selector="create_item_btn_click:" destination="PIT-v8-3Sy" id="boJ-EP-YBU"/>
                                 <segue destination="ccb-Lz-sw3" kind="show" id="PcW-Ly-U5r"/>
                             </connections>
                         </barButtonItem>
