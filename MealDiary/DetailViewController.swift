@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
         descriptionTextView.text = description_text
         mealImageView.image = UIImage(named: image_name_text!)
         // Do any additional setup after loading the view.
-    }					
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,10 +33,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func editTitle(sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Edit title", message: "Enter new title", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Title", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveTitleText(alert.textFields![0].text!)}))
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.placeholder = "Enter text:"
+            textField.placeholder = "Enter new title:"
         })
         
         self.presentViewController(alert, animated: true, completion:{

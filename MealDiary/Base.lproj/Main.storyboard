@@ -43,7 +43,7 @@
                                 <gestureRecognizers/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="u9c-2V-zIF" secondAttribute="trailing" constant="10" id="5py-CW-OmH"/>
                             <constraint firstItem="u9c-2V-zIF" firstAttribute="top" secondItem="4Pn-Gk-1uU" secondAttribute="bottom" constant="30" id="cpZ-M7-G7X"/>
@@ -116,7 +116,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration" hint="asda" label="asdas">
                             <accessibilityTraits key="traits" none="YES"/>
                             <bool key="isElement" value="NO"/>
@@ -154,17 +154,25 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-H0-Wq9">
                                 <rect key="frame" x="0.0" y="72" width="600" height="528"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94783418763589744" green="0.94783418763589744" blue="0.94783418763589744" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="tj9-H0-Wq9" firstAttribute="leading" secondItem="pcL-80-KjL" secondAttribute="leading" id="NEz-qw-POa"/>
-                            <constraint firstItem="tj9-H0-Wq9" firstAttribute="top" secondItem="wGi-lO-HF3" secondAttribute="bottom" constant="8" symbolic="YES" id="f0K-fI-Y1t"/>
-                            <constraint firstAttribute="trailing" secondItem="tj9-H0-Wq9" secondAttribute="trailing" id="lZo-z8-BSX"/>
-                            <constraint firstItem="tj9-H0-Wq9" firstAttribute="bottom" secondItem="Zyt-S5-smR" secondAttribute="top" id="vhF-ua-sNj"/>
+                            <constraint firstItem="tj9-H0-Wq9" firstAttribute="leading" secondItem="pcL-80-KjL" secondAttribute="leading" id="NEz-qw-POa">
+                                <variation key="heightClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="tj9-H0-Wq9" firstAttribute="top" secondItem="wGi-lO-HF3" secondAttribute="bottom" constant="8" symbolic="YES" id="f0K-fI-Y1t">
+                                <variation key="heightClass=regular" constant="80"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="tj9-H0-Wq9" secondAttribute="trailing" id="lZo-z8-BSX">
+                                <variation key="heightClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="tj9-H0-Wq9" firstAttribute="bottom" secondItem="Zyt-S5-smR" secondAttribute="top" id="vhF-ua-sNj">
+                                <variation key="heightClass=regular" constant="-293"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a description" id="PD1-75-hl1">
@@ -289,7 +297,7 @@
                                 </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="8sz-jk-tbG" secondAttribute="bottom" constant="20" symbolic="YES" id="78A-Or-YCV"/>
                             <constraint firstItem="QIu-N0-8oD" firstAttribute="top" secondItem="slH-Yl-KBU" secondAttribute="bottom" constant="8" symbolic="YES" id="7yY-CJ-ytp"/>
@@ -332,7 +340,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Meal details" id="6y1-yA-HPe">
-                        <barButtonItem key="rightBarButtonItem" title="Edit title" id="Y6v-AB-f6a">
+                        <barButtonItem key="rightBarButtonItem" title="Title" style="plain" id="Y6v-AB-f6a">
                             <connections>
                                 <action selector="editTitle:" destination="6ja-t8-C0G" id="gLZ-au-Qbb"/>
                             </connections>
@@ -373,6 +381,6 @@
         <image name="take_photo" width="768" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qvL-Mo-C6d"/>
+        <segue reference="PcW-Ly-U5r"/>
     </inferredMetricsTieBreakers>
 </document>
