@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     var index : Int?
     var title_text: String?
     var description_text: String?
-    var image_name_text: String?
+    var image: UIImage?
     
     var something_changed = false
     
@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = title_text
         descriptionTextView.text = description_text
-        mealImageView.image = UIImage(named: image_name_text!)
+        mealImageView.image = image
         
         self.titleLabel.userInteractionEnabled = true
         let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editTitleTapped(_:)))

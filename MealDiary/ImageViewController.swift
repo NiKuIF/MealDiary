@@ -38,7 +38,7 @@ class ImageViewController: UIViewController {
             imagePicker.sourceType = .PhotoLibrary
         }
         
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(imagePicker.sourceType)!
         
         self.presentViewController(imagePicker, animated: true, completion: nil)
@@ -78,7 +78,7 @@ extension ImageViewController: UINavigationControllerDelegate, UIImagePickerCont
         
       
         self.image.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
+        NewItemContent.image = self.image.image
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

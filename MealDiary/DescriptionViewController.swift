@@ -25,11 +25,15 @@ class DescriptionViewController: UIViewController {
             print("enter a description")
             return
         }
+        if(NewItemContent.image == nil)
+        {
+            print("take a photo")
+            return
+        }
         
         
-        let dict = ["title": NewItemContent.title, "description": description_textview.text]
-        print(dict)
-        NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: dict)
+
+        NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: nil)
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     

@@ -11,19 +11,7 @@ import CoreData
 
 class rootTableViewController: UITableViewController{
     
-    let managedObjectContext =
-        (UIApplication.sharedApplication().delegate
-            as! AppDelegate).managedObjectContext
-    
     var meals = [NSManagedObject]()
-
-    /*
-    var Titles : [String] = [String](arrayLiteral: "Stefan", "Julia", "Struppi", "Schnurli")
-    var Descriptions : [String] = [String](arrayLiteral:
-        "some info",
-        "some infosome infosome infosome infosome infosome infosome infosome infosome info",
-        "some infosome info",
-        "some infosome infosome infosome infosome info")*/
     var Image : String = String("stefan.jpg")
     
     @IBOutlet var tableview: UITableView!
@@ -34,11 +22,6 @@ class rootTableViewController: UITableViewController{
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.appendMeals(_:)),name:"appendItem", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateMeal(_:)), name: "updateItem", object: nil)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,9 +49,10 @@ class rootTableViewController: UITableViewController{
     func appendMeals(notification: NSNotification)
     {
         print("save item")
-        let object = notification.object as! NSDictionary
-        let title = object.valueForKey("title")
-        let description = object.valueForKey("description")
+        let title = NewItemContent.title
+        let description = NewItemContent.description
+        let image = NewItemContent.image
+        let imageData = NSData(data: UIImageJPEGRepresentation(image!, 1.0)!)
         
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
@@ -85,6 +69,7 @@ class rootTableViewController: UITableViewController{
         //3
         meal.setValue(title, forKey: "meal_title")
         meal.setValue(description, forKey: "meal_description")
+        meal.setValue(imageData, forKey: "meal_image")
         
         //4
         do {
@@ -139,7 +124,7 @@ class rootTableViewController: UITableViewController{
 
         let meal = meals[indexPath.row]
         cell.textLabel?.text = meal.valueForKey("meal_title") as? String
-        cell.imageView?.image = UIImage(named: Image);
+        cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
         
         return cell
     }
@@ -210,7 +195,7 @@ class rootTableViewController: UITableViewController{
             dest_vc.index = (indexPath?.row)! as Int
             dest_vc.title_text = meal.valueForKey("meal_title") as? String
             dest_vc.description_text = meal.valueForKey("meal_description") as? String
-            dest_vc.image_name_text = Image
+            dest_vc.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!)
         }
         
     }

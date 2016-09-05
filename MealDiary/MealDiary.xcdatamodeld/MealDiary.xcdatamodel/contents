@@ -2,9 +2,10 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Automatic">
     <entity name="Meals" representedClassName=".Meals" syncable="YES">
         <attribute name="meal_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meal_image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="meal_title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Meals" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Meals" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>
