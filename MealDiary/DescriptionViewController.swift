@@ -11,26 +11,42 @@ import CoreData
 
 class DescriptionViewController: UIViewController {
 
-    @IBAction func create_item_btn_click(sender: UIBarButtonItem) {
-        let managedObjectContext =
-            (UIApplication.sharedApplication().delegate
-                as! AppDelegate).managedObjectContext
+    @IBOutlet weak var description_textview: UITextView!
+    
+    @IBAction func save_item(sender: UIBarButtonItem) {
+        NewItemContent.description = description_textview.text
+        if(NewItemContent.title == "" || NewItemContent.title == nil)
+        {
+             print("enter a title")
+            return
+        }
+        if(description_textview.text == "" || description_textview.text.isEmpty)
+        {
+            print("enter a description")
+            return
+        }
         
-        let entityDescription =
-            NSEntityDescription.entityForName("Meals",
-                                              inManagedObjectContext: managedObjectContext)
         
-        let meal = Meals(entity: entityDescription!,
-                               insertIntoManagedObjectContext: managedObjectContext)
-        
-        meal.meal_title = "test"
-        meal.meal_description = "asdfasdfasfasdfasdfasfasfddafasdf"
+        let dict = ["title": NewItemContent.title, "description": description_textview.text]
+        print(dict)
+        NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: dict)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        description_textview.text = NewItemContent.description
+        
 
         // Do any additional setup after loading the view.
     }
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil {
+            NewItemContent.description = description_textview.text
+        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,14 +54,15 @@ class DescriptionViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
     }
-    */
+    
 
 }

@@ -131,10 +131,13 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="ZPk-xB-chg"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="UaR-XI-h4V">
                             <connections>
-                                <segue destination="PIT-v8-3Sy" kind="show" id="T14-SK-ae9"/>
+                                <segue destination="PIT-v8-3Sy" kind="show" identifier="add_title" id="T14-SK-ae9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="title_textfield" destination="PVC-7C-kZl" id="i4n-T1-Cbh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6L-Bd-XQK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,11 +181,13 @@
                     <navigationItem key="navigationItem" title="Add a description" id="PD1-75-hl1">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ULB-4u-EVX">
                             <connections>
-                                <action selector="create_item_btn_click:" destination="PIT-v8-3Sy" id="boJ-EP-YBU"/>
-                                <segue destination="ccb-Lz-sw3" kind="show" id="PcW-Ly-U5r"/>
+                                <action selector="save_item:" destination="PIT-v8-3Sy" id="Eby-Tx-rrv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="description_textview" destination="tj9-H0-Wq9" id="pKP-xP-IB0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nI6-Xm-YOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -381,7 +386,4 @@
     <resources>
         <image name="take_photo" width="768" height="1024"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="PcW-Ly-U5r"/>
-    </inferredMetricsTieBreakers>
 </document>
