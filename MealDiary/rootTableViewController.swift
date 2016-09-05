@@ -31,7 +31,9 @@ class rootTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(rootTableViewController.appendMeals(_:)),name:"appendItem", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.appendMeals(_:)),name:"appendItem", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateMeal(_:)), name: "updateItem", object: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -97,6 +99,23 @@ class rootTableViewController: UITableViewController{
         
     }
 
+    func updateMeal(notification: NSNotification)
+    {
+        let object = notification.object as! NSDictionary
+        let meal = meals[object.valueForKey("index") as! Int] 
+        
+        meal.setValue(object.valueForKey("title"), forKey: "meal_title")
+        meal.setValue(object.valueForKey("description"), forKey: "meal_description")
+        
+        do {
+            try meal.managedObjectContext?.save()
+            tableview.reloadData()
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -188,6 +207,7 @@ class rootTableViewController: UITableViewController{
             let dest_vc : DetailViewController = segue.destinationViewController as! DetailViewController
             let meal = meals[(indexPath?.row)!]
             
+            dest_vc.index = (indexPath?.row)! as Int
             dest_vc.title_text = meal.valueForKey("meal_title") as? String
             dest_vc.description_text = meal.valueForKey("meal_description") as? String
             dest_vc.image_name_text = Image

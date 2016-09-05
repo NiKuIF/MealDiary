@@ -262,6 +262,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-N0-8oD">
                                 <rect key="frame" x="20" y="72" width="560" height="51"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Vxh-Hx-cw0"/>
                                 </constraints>
@@ -345,13 +346,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Meal details" id="6y1-yA-HPe">
-                        <barButtonItem key="rightBarButtonItem" title="Title" style="plain" id="Y6v-AB-f6a">
-                            <connections>
-                                <action selector="editTitle:" destination="6ja-t8-C0G" id="gLZ-au-Qbb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Meal details" id="6y1-yA-HPe"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="dc0-gu-JmI" id="afa-Ca-9SJ"/>
                         <outlet property="mealImageView" destination="8sz-jk-tbG" id="g2W-YZ-QbF"/>

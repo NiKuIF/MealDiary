@@ -15,24 +15,33 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var mealImageView: UIImageView!
     
+    var index : Int?
     var title_text: String?
     var description_text: String?
     var image_name_text: String?
+    
+    var something_changed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = title_text
         descriptionTextView.text = description_text
         mealImageView.image = UIImage(named: image_name_text!)
+        
+        self.titleLabel.userInteractionEnabled = true
+        let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editTitleTapped(_:)))
+        titleLabel.addGestureRecognizer(titleTapGesture)
+
         // Do any additional setup after loading the view.
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func editTitle(sender: UIBarButtonItem) {
+    func editTitleTapped(sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Title", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveTitleText(alert.textFields![0].text!)}))
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
@@ -49,12 +58,26 @@ class DetailViewController: UIViewController {
     {
         print("change title to : \(new_title)")
         titleLabel.text = new_title
+        something_changed = true
     }
     
     func alertControllerBackgroundTapped()
     {
         print("background tap")
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil {
+            if(something_changed || descriptionTextView.text != description_text)
+            {
+                print("update item")
+                let object:NSDictionary = ["index": index!, "title": titleLabel.text!, "description": descriptionTextView.text]
+                NSNotificationCenter.defaultCenter().postNotificationName("updateItem", object: object)
+            }
+            
+        }
     }
 
     /*
