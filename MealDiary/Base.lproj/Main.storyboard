@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="534" y="-39"/>
         </scene>
-        <!--Take a photo-->
+        <!--Add a photo-->
         <scene sceneID="218-pD-ilw">
             <objects>
                 <viewController storyboardIdentifier="ImageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sbY-zK-YWt" customClass="ImageViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Take a photo" id="MEG-oX-e86">
+                    <navigationItem key="navigationItem" title="Add a photo" id="MEG-oX-e86">
                         <barButtonItem key="backBarButtonItem" title="back" id="reO-0d-rxy"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rvn-7V-Qxt">
                             <connections>
@@ -98,7 +98,7 @@
             </objects>
             <point key="canvasLocation" x="1377" y="-39"/>
         </scene>
-        <!--Give a title-->
+        <!--Add a title-->
         <scene sceneID="n6Q-9P-xH4">
             <objects>
                 <viewController id="08Q-ME-5Q3" customClass="TitleViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter a title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PVC-7C-kZl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PVC-7C-kZl">
                                 <rect key="frame" x="90" y="120" width="420" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -127,7 +127,7 @@
                             <constraint firstItem="PVC-7C-kZl" firstAttribute="leading" secondItem="47p-FW-HJ1" secondAttribute="leadingMargin" constant="70" id="mvQ-Am-wii"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Give a title" id="oWi-wi-7cz">
+                    <navigationItem key="navigationItem" title="Add a title" id="oWi-wi-7cz">
                         <barButtonItem key="backBarButtonItem" title="back" id="ZPk-xB-chg"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="UaR-XI-h4V">
                             <connections>

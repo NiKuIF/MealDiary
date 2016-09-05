@@ -15,22 +15,28 @@ class DescriptionViewController: UIViewController {
     
     @IBAction func save_item(sender: UIBarButtonItem) {
         NewItemContent.description = description_textview.text
+        
+        if(NewItemContent.image == nil)
+        {
+            let alert = UIAlertController(title: "Info", message: "Add an image!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
         if(NewItemContent.title == "" || NewItemContent.title == nil)
         {
-             print("enter a title")
+            let alert = UIAlertController(title: "Info", message: "Add a title!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
+            self.presentViewController(alert, animated: true, completion: nil)
             return
         }
         if(description_textview.text == "" || description_textview.text.isEmpty)
         {
-            print("enter a description")
+            let alert = UIAlertController(title: "Info", message: "Add a description!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
+            self.presentViewController(alert, animated: true, completion: nil)
             return
         }
-        if(NewItemContent.image == nil)
-        {
-            print("take a photo")
-            return
-        }
-        
         
 
         NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: nil)
