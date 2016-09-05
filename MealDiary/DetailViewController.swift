@@ -42,10 +42,13 @@ class DetailViewController: UIViewController {
     }
     
     func editTitleTapped(sender: UITapGestureRecognizer) {
-        let alert = UIAlertController(title: "Title", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: " Edit title", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveTitleText(alert.textFields![0].text!)}))
         alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "Enter new title:"
+            textField.text = self.titleLabel.text
+            textField.clearButtonMode = .WhileEditing
+            
         })
         
         self.presentViewController(alert, animated: true, completion:{

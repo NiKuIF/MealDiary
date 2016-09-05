@@ -193,7 +193,7 @@
             </objects>
             <point key="canvasLocation" x="3020" y="-39"/>
         </scene>
-        <!--MailDiary-->
+        <!--MealDiary-->
         <scene sceneID="9dL-W9-P4E">
             <objects>
                 <tableViewController storyboardIdentifier="rootTableViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Fz-kU-3sB" customClass="rootTableViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,7 +231,7 @@
                             <outlet property="delegate" destination="7Fz-kU-3sB" id="uFE-RL-JmQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MailDiary" id="AXN-XR-WY7">
+                    <navigationItem key="navigationItem" title="MealDiary" id="AXN-XR-WY7">
                         <barButtonItem key="backBarButtonItem" title="Menu" id="Tg1-dM-vWe"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Gx8-lQ-9gD">
                             <connections>
@@ -260,14 +260,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-N0-8oD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-N0-8oD">
                                 <rect key="frame" x="20" y="72" width="560" height="51"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Vxh-Hx-cw0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
