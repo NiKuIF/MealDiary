@@ -17,21 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_blurry" translatesAutoresizingMaskIntoConstraints="NO" id="KR6-6j-IQP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MealDiary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZO-Bp-EnI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.41671104247381624" blue="0.90488546968717942" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eZO-Bp-EnI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="EUZ-Ue-t3U"/>
-                            <constraint firstItem="eZO-Bp-EnI" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="Shk-h0-DjD"/>
-                            <constraint firstItem="eZO-Bp-EnI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="p9n-OD-Yzt"/>
-                            <constraint firstAttribute="trailing" secondItem="eZO-Bp-EnI" secondAttribute="trailing" id="sOo-Jo-6qa"/>
+                            <constraint firstItem="KR6-6j-IQP" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="1Hx-8a-YhI"/>
+                            <constraint firstItem="eZO-Bp-EnI" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="6Kr-Z4-Yyr"/>
+                            <constraint firstItem="KR6-6j-IQP" firstAttribute="top" secondItem="eZO-Bp-EnI" secondAttribute="top" id="YgV-6g-SYI"/>
+                            <constraint firstItem="KR6-6j-IQP" firstAttribute="leading" secondItem="eZO-Bp-EnI" secondAttribute="leading" id="cDQ-7R-gAm"/>
+                            <constraint firstItem="eZO-Bp-EnI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ceg-GG-eYv"/>
+                            <constraint firstItem="KR6-6j-IQP" firstAttribute="trailing" secondItem="eZO-Bp-EnI" secondAttribute="trailing" id="eNi-ae-0sL"/>
+                            <constraint firstItem="eZO-Bp-EnI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kt1-Jq-nSo"/>
+                            <constraint firstAttribute="trailing" secondItem="eZO-Bp-EnI" secondAttribute="trailing" id="ogF-iD-LlZ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +47,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="green_blurry" width="2560" height="1600"/>
+    </resources>
 </document>

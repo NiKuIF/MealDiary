@@ -26,6 +26,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         titleLabel.text = title_text
         descriptionTextView.text = description_text
         mealImageView.image = image
