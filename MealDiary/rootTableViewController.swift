@@ -87,13 +87,16 @@ class rootTableViewController: UITableViewController{
     func updateMeal(notification: NSNotification)
     {
         let object = notification.object as! NSDictionary
-        let meal = meals[object.valueForKey("index") as! Int] 
+        let meal = meals[object.valueForKey("index") as! Int]
+        let imageData = NSData(data: UIImageJPEGRepresentation(NewItemContent.image!, 1.0)!)
         
-        meal.setValue(object.valueForKey("title"), forKey: "meal_title")
-        meal.setValue(object.valueForKey("description"), forKey: "meal_description")
+        meal.setValue(NewItemContent.title, forKey: "meal_title")
+        meal.setValue(NewItemContent.description, forKey: "meal_description")
+        meal.setValue(imageData, forKey: "meal_image")
         
         do {
             try meal.managedObjectContext?.save()
+            NewItemContent.clear()
             tableview.reloadData()
         } catch {
             let saveError = error as NSError

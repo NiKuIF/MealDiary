@@ -15,6 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var mealImageView: UIImageView!
     
+    var imagePicker: UIImagePickerController!
+    
     var index : Int?
     var title_text: String?
     var description_text: String?
@@ -31,11 +33,35 @@ class DetailViewController: UIViewController {
         self.titleLabel.userInteractionEnabled = true
         let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editTitleTapped(_:)))
         titleLabel.addGestureRecognizer(titleTapGesture)
+        
+        self.mealImageView.userInteractionEnabled = true
+        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.takePhotoTapped(_:)))
+        mealImageView.addGestureRecognizer(imageTapGesture)
 
         // Do any additional setup after loading the view.
     }
 
 
+    func takePhotoTapped(sender: UITapGestureRecognizer) {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera)
+        {
+            imagePicker.sourceType = .Camera
+        }
+        else
+        {
+            imagePicker.sourceType = .PhotoLibrary
+        }
+        
+        imagePicker.allowsEditing = false
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(imagePicker.sourceType)!
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,10 +102,13 @@ class DetailViewController: UIViewController {
             if(something_changed || descriptionTextView.text != description_text)
             {
                 print("update item")
-                let object:NSDictionary = ["index": index!, "title": titleLabel.text!, "description": descriptionTextView.text]
+                NewItemContent.title = titleLabel.text
+                NewItemContent.description = descriptionTextView.text
+                NewItemContent.image = mealImageView.image
+                let object:NSDictionary = ["index": index!]
                 NSNotificationCenter.defaultCenter().postNotificationName("updateItem", object: object)
             }
-            
+
         }
     }
 
@@ -93,4 +122,22 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
+
+extension DetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
+{
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        print("user cnacled the camera/ photo library")
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        //let mediatype = info[UIImagePickerControllerMediaType] as! String
+        
+        
+        self.mealImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        something_changed = true
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
