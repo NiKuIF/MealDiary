@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        descriptionTextView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20)
         titleLabel.text = title_text
         descriptionTextView.text = description_text
         mealImageView.image = image

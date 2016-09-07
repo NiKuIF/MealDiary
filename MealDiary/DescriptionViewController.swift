@@ -45,6 +45,7 @@ class DescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        description_textview.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20)
         description_textview.text = NewItemContent.description
         
 

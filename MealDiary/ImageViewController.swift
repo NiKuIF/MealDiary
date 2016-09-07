@@ -11,6 +11,8 @@ import UIKit
 class ImageViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    
     var imagePicker: UIImagePickerController!
     
     @IBAction func cancelAddItem(sender: UIBarButtonItem) {
@@ -54,15 +56,21 @@ class ImageViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "back_to_menu")
+        {
+            print("back to menu and clear content")
+            NewItemContent.clear()
+        }
     }
-    */
+    
 
 }
 
@@ -77,8 +85,8 @@ extension ImageViewController: UINavigationControllerDelegate, UIImagePickerCont
         //let mediatype = info[UIImagePickerControllerMediaType] as! String
         
       
-        self.image.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        NewItemContent.image = self.image.image
+        self.imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        NewItemContent.image = self.imageView.image
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
