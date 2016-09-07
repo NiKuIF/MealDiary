@@ -118,6 +118,8 @@ class DetailViewController: UIViewController {
         print("touch")
         view.endEditing(true)
     }
+    
+    
 
     /*
     // MARK: - Navigation

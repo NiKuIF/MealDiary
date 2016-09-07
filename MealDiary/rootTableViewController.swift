@@ -18,9 +18,11 @@ class rootTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let background = UIImageView(image: UIImage(named: "green_blurry"))
+        let background = UIImageView(image: UIImage(named: "spies"))
+    
         background.alpha = 1
         tableview.backgroundView = background
+        tableview.backgroundView?.contentMode = UIViewContentMode.ScaleAspectFill
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.appendMeals(_:)),name:"appendItem", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateMeal(_:)), name: "updateItem", object: nil)
@@ -130,12 +132,10 @@ class rootTableViewController: UITableViewController{
         let meal = meals[indexPath.row]
         cell.textLabel?.text = meal.valueForKey("meal_title") as? String
         cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
-        let background = UIImageView(image: UIImage(named: "green_blurry"))
-        background.alpha = 0.75
-        cell.backgroundView = background
-        let background2 = UIImageView(image: UIImage(named: "green_blurry"))
-        background2.alpha = 0.6
-        cell.selectedBackgroundView = background2
+        
+        let background = UIView()
+        background.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        cell.selectedBackgroundView = background
         return cell
     }
     
