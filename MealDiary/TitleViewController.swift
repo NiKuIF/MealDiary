@@ -40,8 +40,8 @@ class TitleViewController: UIViewController {
             NewItemContent.title = title
             
         }
-        
     }
+ 
     
 
 }

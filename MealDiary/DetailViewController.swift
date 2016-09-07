@@ -113,6 +113,11 @@ class DetailViewController: UIViewController {
 
         }
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("touch")
+        view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
