@@ -56,6 +56,7 @@ class rootTableViewController: UITableViewController{
         let title = NewItemContent.title
         let description = NewItemContent.description
         let image = NewItemContent.image
+        NewItemContent.clear()
         let imageData = NSData(data: UIImageJPEGRepresentation(image!, 1.0)!)
         
         let appDelegate =
@@ -80,7 +81,7 @@ class rootTableViewController: UITableViewController{
             try managedContext.save()
             //5
             meals.append(meal)
-            NewItemContent.clear()
+            //NewItemContent.clear()
             tableview.reloadData()
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
@@ -134,8 +135,11 @@ class rootTableViewController: UITableViewController{
         cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
         
         let background = UIView()
-        background.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        background.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.6)
         cell.selectedBackgroundView = background
+        let background2 = UIView()
+        background2.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        cell.backgroundView = background2
         return cell
     }
     

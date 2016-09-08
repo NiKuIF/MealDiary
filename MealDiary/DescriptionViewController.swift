@@ -14,6 +14,7 @@ class DescriptionViewController: UIViewController {
     @IBOutlet weak var description_textview: UITextView!
     
     @IBAction func save_item(sender: UIBarButtonItem) {
+        sender.enabled = false
         NewItemContent.description = description_textview.text
         
         if(NewItemContent.image == nil)
@@ -35,11 +36,14 @@ class DescriptionViewController: UIViewController {
             let alert = UIAlertController(title: "Info", message: "Add a description!", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
             self.presentViewController(alert, animated: true, completion: nil)
+            sender.enabled = true
             return
         }
         
 
+        print("send append item notification")
         NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: nil)
+        print("going to dismiss add item view")
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
