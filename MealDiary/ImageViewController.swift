@@ -32,19 +32,30 @@ class ImageViewController: UIViewController {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        if UIImagePickerController.isSourceTypeAvailable(.Camera)
-        {
-            imagePicker.sourceType = .Camera
-        }
-        else
-        {
-            imagePicker.sourceType = .PhotoLibrary
-        }
+        imagePicker.sourceType = .PhotoLibrary
         
-        imagePicker.allowsEditing = false
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(imagePicker.sourceType)!
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+                if UIImagePickerController.isSourceTypeAvailable(.Camera)
+                {
+                self.imagePicker.sourceType = .Camera
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+                self.imagePicker.sourceType = .PhotoLibrary
+            }))
+        self.presentViewController(alert, animated: true, completion: {
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
+            
+            
+        })
+        self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        
+      
+        
+        
     
     }
     

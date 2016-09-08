@@ -174,8 +174,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-H0-Wq9">
-                                <rect key="frame" x="20" y="100" width="560" height="464"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <rect key="frame" x="20" y="100" width="560" height="213"/>
+                                <color key="backgroundColor" red="0.80054086538461533" green="0.80054086538461533" blue="0.80054086538461533" alpha="0.64692887931034482" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -183,7 +183,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tj9-H0-Wq9" firstAttribute="top" secondItem="wGi-lO-HF3" secondAttribute="bottom" constant="36" id="5gY-Tj-9Sy"/>
-                            <constraint firstItem="Zyt-S5-smR" firstAttribute="top" secondItem="tj9-H0-Wq9" secondAttribute="bottom" constant="36" id="Los-mx-XYb"/>
+                            <constraint firstItem="Zyt-S5-smR" firstAttribute="top" secondItem="tj9-H0-Wq9" secondAttribute="bottom" constant="287" id="Los-mx-XYb"/>
                             <constraint firstItem="2JZ-97-u7I" firstAttribute="top" secondItem="wGi-lO-HF3" secondAttribute="bottom" id="MV5-0i-wWu"/>
                             <constraint firstItem="tj9-H0-Wq9" firstAttribute="trailing" secondItem="pcL-80-KjL" secondAttribute="trailingMargin" id="Zkl-Ci-UUJ"/>
                             <constraint firstItem="2JZ-97-u7I" firstAttribute="leading" secondItem="pcL-80-KjL" secondAttribute="leading" id="dOl-ln-wGL"/>
