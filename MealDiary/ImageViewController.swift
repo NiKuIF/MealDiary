@@ -16,7 +16,8 @@ class ImageViewController: UIViewController {
     var imagePicker: UIImagePickerController!
     
     @IBAction func cancelAddItem(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("back_to_menu", sender: nil)
+        NewItemContent.clear()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     
@@ -64,11 +65,7 @@ class ImageViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if(segue.identifier == "back_to_menu")
-        {
-            print("back to menu and clear content")
-            NewItemContent.clear()
-        }
+      
     }
     
 

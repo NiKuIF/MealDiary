@@ -86,7 +86,6 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rvn-7V-Qxt">
                             <connections>
                                 <action selector="cancelAddItem:" destination="sbY-zK-YWt" id="RyJ-uM-weM"/>
-                                <segue destination="ccb-Lz-sw3" kind="show" identifier="back_to_menu" id="qvL-Mo-C6d"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Zlx-FK-qUn">
