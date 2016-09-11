@@ -32,30 +32,29 @@ class ImageViewController: UIViewController {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        imagePicker.sourceType = .PhotoLibrary
         
         
-            let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
+        
+        let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
+        if UIImagePickerController.isSourceTypeAvailable(.Camera)
+        {
             alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-                if UIImagePickerController.isSourceTypeAvailable(.Camera)
-                {
                 self.imagePicker.sourceType = .Camera
-                }
+                print("camera pressed")
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
             }))
-            alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-                self.imagePicker.sourceType = .PhotoLibrary
-            }))
-        self.presentViewController(alert, animated: true, completion: {
-            self.imagePicker.allowsEditing = false
-            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
-            
-            
-        })
-        self.presentViewController(self.imagePicker, animated: true, completion: nil)
-        
+        }
       
-        
-        
+        alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+                self.imagePicker.sourceType = .PhotoLibrary
+                print ("library pressed")
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            }))
+        self.presentViewController(alert, animated: true, completion: nil)
     
     }
     
