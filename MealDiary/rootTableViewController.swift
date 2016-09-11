@@ -128,11 +128,14 @@ class rootTableViewController: UITableViewController{
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
 
         let meal = meals[indexPath.row]
-        cell.textLabel?.text = meal.valueForKey("meal_title") as? String
-        cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
+       /* cell.textLabel?.text = meal.valueForKey("meal_title") as? String
+        cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);*/
+        cell.ImageView.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
+        cell.title.text = meal.valueForKey("meal_title") as? String
+        cell.rating.progress = 0.7
         
         let background = UIView()
         background.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.6)

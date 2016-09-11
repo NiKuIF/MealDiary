@@ -217,28 +217,70 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="7Qd-7E-8mw" rowHeight="100" style="IBUITableViewCellStyleDefault" id="DWv-NO-wK4">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="DWv-NO-wK4" customClass="CustomCell" customModule="MealDiary" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DWv-NO-wK4" id="eSg-Vi-gu1">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Qd-7E-8mw">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWc-jK-nXs">
+                                            <rect key="frame" x="199" y="8" width="360" height="54"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="Ks9-YZ-jfu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="135" y="8" width="224" height="54"/>
+                                            </variation>
+                                            <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="135" y="8" width="224" height="54"/>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="135" y="8" width="224" height="54"/>
                                             </variation>
                                         </label>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gp8-rf-Xl2">
+                                            <rect key="frame" x="203" y="79" width="356" height="2"/>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="135" y="79" width="224" height="2"/>
+                                            </variation>
+                                            <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="135" y="79" width="224" height="2"/>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="135" y="79" width="224" height="2"/>
+                                            </variation>
+                                        </progressView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWL-BK-lPW">
+                                            <rect key="frame" x="12" y="12" width="179" height="75.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="179" id="qer-iX-VLw">
+                                                    <variation key="widthClass=compact" constant="119"/>
+                                                </constraint>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="trailing" secondItem="Gp8-rf-Xl2" secondAttribute="trailing" id="CZi-4H-Xzb"/>
+                                        <constraint firstItem="Gp8-rf-Xl2" firstAttribute="top" secondItem="hWc-jK-nXs" secondAttribute="bottom" constant="17" id="Djx-dN-ngb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pWL-BK-lPW" secondAttribute="bottom" constant="4" id="HYh-2F-zEq"/>
+                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="leading" secondItem="eSg-Vi-gu1" secondAttribute="leadingMargin" constant="4" id="IKi-RK-og8"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="leading" secondItem="pWL-BK-lPW" secondAttribute="trailing" constant="8" symbolic="YES" id="Z8o-5a-eJ1"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="leading" secondItem="Gp8-rf-Xl2" secondAttribute="leading" id="beP-DX-PzM"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="trailing" secondItem="eSg-Vi-gu1" secondAttribute="trailingMargin" id="da2-Pv-Dro"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="top" secondItem="eSg-Vi-gu1" secondAttribute="topMargin" id="sg5-1g-yni"/>
+                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="top" secondItem="eSg-Vi-gu1" secondAttribute="topMargin" constant="4" id="vw4-ih-fBy"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="ImageView" destination="pWL-BK-lPW" id="BMa-NJ-P6L"/>
+                                    <outlet property="rating" destination="Gp8-rf-Xl2" id="TNT-MN-3o0"/>
+                                    <outlet property="title" destination="hWc-jK-nXs" id="bFh-22-MzS"/>
                                     <segue destination="6ja-t8-C0G" kind="push" identifier="cell_click" id="nTk-k8-9Uz"/>
                                 </connections>
                             </tableViewCell>
@@ -263,7 +305,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTX-Jt-FUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="874"/>
+            <point key="canvasLocation" x="1377" y="873"/>
         </scene>
         <!--Meal details-->
         <scene sceneID="8Jm-CP-ICl">

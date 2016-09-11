@@ -58,9 +58,6 @@ class ImageViewController: UIViewController {
     
     }
     
-   
-    
- 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,7 +82,7 @@ extension ImageViewController: UINavigationControllerDelegate, UIImagePickerCont
 {
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        print("user cnacled the camera/ photo library")
+        print("user cancled the camera/ photo library")
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {

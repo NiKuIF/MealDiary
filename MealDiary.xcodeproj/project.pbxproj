@@ -10,10 +10,10 @@
 		8401DDF91D78B1DE0018FB0F /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8401DDF81D78B1DE0018FB0F /* TitleViewController.swift */; };
 		8401DDFB1D78B6480018FB0F /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8401DDFA1D78B6480018FB0F /* DescriptionViewController.swift */; };
 		840971C31D7C76C500FB0234 /* Meals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840971C11D7C76C500FB0234 /* Meals.swift */; };
+		840B04B61D8558ED0053F6E2 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B04B51D8558ED0053F6E2 /* CustomCell.swift */; };
 		8411E7D31D7DAF7200F006CF /* Meals+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411E7D21D7DAF7200F006CF /* Meals+CoreDataProperties.swift */; };
 		841324611D7D6A4B00E763C1 /* NewItemContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841324601D7D6A4B00E763C1 /* NewItemContent.swift */; };
 		8495E4341D76D5030061A94D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E4331D76D5030061A94D /* ImageViewController.swift */; };
-		84AC06681D689F430020D11A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC06671D689F430020D11A /* CustomCell.swift */; };
 		84DAB7FA1D66FD78009E882A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DAB7F91D66FD78009E882A /* AppDelegate.swift */; };
 		84DAB7FF1D66FD78009E882A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DAB7FD1D66FD78009E882A /* Main.storyboard */; };
 		84DAB8021D66FD78009E882A /* MealDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84DAB8001D66FD78009E882A /* MealDiary.xcdatamodeld */; };
@@ -46,10 +46,10 @@
 		8401DDF81D78B1DE0018FB0F /* TitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		8401DDFA1D78B6480018FB0F /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		840971C11D7C76C500FB0234 /* Meals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meals.swift; path = ../Meals.swift; sourceTree = "<group>"; };
+		840B04B51D8558ED0053F6E2 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		8411E7D21D7DAF7200F006CF /* Meals+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Meals+CoreDataProperties.swift"; path = "../Meals+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		841324601D7D6A4B00E763C1 /* NewItemContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemContent.swift; sourceTree = "<group>"; };
 		8495E4331D76D5030061A94D /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		84AC06671D689F430020D11A /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCell.swift; path = ../CustomCell.swift; sourceTree = "<group>"; };
 		84DAB7F61D66FD78009E882A /* MealDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DAB7F91D66FD78009E882A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DAB7FE1D66FD78009E882A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,7 +117,6 @@
 			children = (
 				8411E7D21D7DAF7200F006CF /* Meals+CoreDataProperties.swift */,
 				840971C11D7C76C500FB0234 /* Meals.swift */,
-				84AC06671D689F430020D11A /* CustomCell.swift */,
 				84DAB7F91D66FD78009E882A /* AppDelegate.swift */,
 				84DAB8031D66FD78009E882A /* Assets.xcassets */,
 				84DAB8081D66FD78009E882A /* Info.plist */,
@@ -151,6 +150,7 @@
 			children = (
 				8411E7CF1D7DAD6000F006CF /* appfiles */,
 				84E8F0601D75A01500284D0F /* rootTableViewController.swift */,
+				840B04B51D8558ED0053F6E2 /* CustomCell.swift */,
 				84E8F0621D75A4A300284D0F /* DetailViewController.swift */,
 				8411E7CE1D7DAD1700F006CF /* storyboards */,
 				8411E7CD1D7DAC5500F006CF /* addItem */,
@@ -309,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DAB8021D66FD78009E882A /* MealDiary.xcdatamodeld in Sources */,
-				84AC06681D689F430020D11A /* CustomCell.swift in Sources */,
 				84E8F0631D75A4A300284D0F /* DetailViewController.swift in Sources */,
 				840971C31D7C76C500FB0234 /* Meals.swift in Sources */,
 				8401DDF91D78B1DE0018FB0F /* TitleViewController.swift in Sources */,
@@ -318,6 +317,7 @@
 				8401DDFB1D78B6480018FB0F /* DescriptionViewController.swift in Sources */,
 				841324611D7D6A4B00E763C1 /* NewItemContent.swift in Sources */,
 				84E8F0611D75A01500284D0F /* rootTableViewController.swift in Sources */,
+				840B04B61D8558ED0053F6E2 /* CustomCell.swift in Sources */,
 				8495E4341D76D5030061A94D /* ImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
