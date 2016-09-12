@@ -14,12 +14,14 @@ class NewItemContent
     static var title : String?
     static var description : String?
     static var image: UIImage?
+    static var rating: Int = 0
     
     static func clear()
     {
         title = nil
         description = nil
         image = nil
+        rating = 0
     }
     
     

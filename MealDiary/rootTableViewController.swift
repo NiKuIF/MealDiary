@@ -56,6 +56,8 @@ class rootTableViewController: UITableViewController{
         let title = NewItemContent.title
         let description = NewItemContent.description
         let image = NewItemContent.image
+        
+        let rating = NSDecimalNumber(integer: NewItemContent.rating)
         NewItemContent.clear()
         let imageData = NSData(data: UIImageJPEGRepresentation(image!, 1.0)!)
         
@@ -75,7 +77,7 @@ class rootTableViewController: UITableViewController{
         meal.setValue(title, forKey: "meal_title")
         meal.setValue(description, forKey: "meal_description")
         meal.setValue(imageData, forKey: "meal_image")
-        
+        meal.setValue(rating, forKey: "meal_rating")
         //4
         do {
             try managedContext.save()
@@ -94,11 +96,11 @@ class rootTableViewController: UITableViewController{
         let object = notification.object as! NSDictionary
         let meal = meals[object.valueForKey("index") as! Int]
         let imageData = NSData(data: UIImageJPEGRepresentation(NewItemContent.image!, 1.0)!)
-        
+        let rating = NSDecimalNumber(integer: NewItemContent.rating)
         meal.setValue(NewItemContent.title, forKey: "meal_title")
         meal.setValue(NewItemContent.description, forKey: "meal_description")
         meal.setValue(imageData, forKey: "meal_image")
-        
+        meal.setValue(rating, forKey: "meal_rating")
         do {
             try meal.managedObjectContext?.save()
             NewItemContent.clear()
@@ -135,7 +137,7 @@ class rootTableViewController: UITableViewController{
         cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);*/
         cell.ImageView.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
         cell.title.text = meal.valueForKey("meal_title") as? String
-        cell.rating.progress = 0.7
+        cell.rating.progress = ((meal.valueForKey("meal_rating") as? NSDecimalNumber)?.floatValue)! / 10
         
         let background = UIView()
         background.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.6)

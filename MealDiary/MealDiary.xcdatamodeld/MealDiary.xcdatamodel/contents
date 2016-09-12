@@ -3,9 +3,10 @@
     <entity name="Meals" representedClassName=".Meals" syncable="YES">
         <attribute name="meal_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meal_image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="meal_rating" optional="YES" attributeType="Decimal" minValueString="0" maxValueString="10" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meal_title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Meals" positionX="-128" positionY="18" width="128" height="88"/>
+        <element name="Meals" positionX="-128" positionY="18" width="128" height="103"/>
     </elements>
 </model>

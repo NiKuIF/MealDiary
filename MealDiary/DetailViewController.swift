@@ -107,6 +107,7 @@ class DetailViewController: UIViewController {
                 NewItemContent.title = titleLabel.text
                 NewItemContent.description = descriptionTextView.text
                 NewItemContent.image = mealImageView.image
+                NewItemContent.rating = 5
                 let object:NSDictionary = ["index": index!]
                 NSNotificationCenter.defaultCenter().postNotificationName("updateItem", object: object)
             }
