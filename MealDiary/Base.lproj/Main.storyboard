@@ -274,7 +274,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="pte-Rb-zRF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="DWv-NO-wK4" customClass="CustomCell" customModule="MealDiary" customModuleProvider="target">
@@ -290,7 +290,7 @@
                                                 <constraint firstAttribute="height" constant="54" id="Ks9-YZ-jfu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" misplaced="YES">
                                                 <rect key="frame" x="135" y="8" width="224" height="54"/>
@@ -302,8 +302,8 @@
                                                 <rect key="frame" x="135" y="8" width="224" height="54"/>
                                             </variation>
                                         </label>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gp8-rf-Xl2">
-                                            <rect key="frame" x="112" y="77" width="455" height="2"/>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gp8-rf-Xl2">
+                                            <rect key="frame" x="108" y="75" width="459" height="2"/>
                                         </progressView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWL-BK-lPW">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="99.5"/>
@@ -375,7 +375,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-N0-8oD">
-                                <rect key="frame" x="20" y="72" width="560" height="49"/>
+                                <rect key="frame" x="20" y="72" width="560" height="23.5"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="D8B-ry-B7Y"/>
@@ -390,9 +390,14 @@
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="D8B-ry-B7Y"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dc0-gu-JmI">
-                                <rect key="frame" x="20" y="147" width="560" height="195"/>
+                                <rect key="frame" x="20" y="135" width="560" height="207"/>
                                 <color key="backgroundColor" red="0.89108856889999999" green="0.89108856889999999" blue="0.89108856889999999" alpha="0.55853834219999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="185" id="WdW-y9-W9i"/>
@@ -400,15 +405,22 @@
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WdW-y9-W9i"/>
+                                    </mask>
+                                </variation>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sz-jk-tbG">
                                 <rect key="frame" x="20" y="360" width="560" height="230"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="N8b-nd-hma"/>
+                                    <constraint firstAttribute="height" constant="230" id="SE9-oO-9JD"/>
                                     <constraint firstAttribute="height" constant="288" id="rac-Ev-DjK"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="N8b-nd-hma"/>
                                         <exclude reference="rac-Ev-DjK"/>
                                     </mask>
                                 </variation>
@@ -419,9 +431,9 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrg-9Z-5eE">
-                                <rect key="frame" x="20" y="115" width="560" height="24"/>
+                                <rect key="frame" x="20" y="115" width="560" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -440,12 +452,19 @@
                             <constraint firstItem="QIu-N0-8oD" firstAttribute="trailing" secondItem="dc0-gu-JmI" secondAttribute="trailing" id="YVz-dY-vGs"/>
                             <constraint firstItem="mcj-cd-ACk" firstAttribute="bottom" secondItem="vk2-5e-ZLI" secondAttribute="top" id="cjW-ei-sSl"/>
                             <constraint firstItem="mcj-cd-ACk" firstAttribute="top" secondItem="7UV-ev-e1P" secondAttribute="top" id="gNa-Ge-0cv"/>
+                            <constraint firstItem="vk2-5e-ZLI" firstAttribute="top" secondItem="8sz-jk-tbG" secondAttribute="bottom" constant="10" id="k1D-lJ-wut"/>
                             <constraint firstItem="QIu-N0-8oD" firstAttribute="trailing" secondItem="7UV-ev-e1P" secondAttribute="trailingMargin" id="m9N-9M-UPg"/>
                             <constraint firstItem="dc0-gu-JmI" firstAttribute="top" secondItem="mrg-9Z-5eE" secondAttribute="bottom" constant="8" symbolic="YES" id="mmU-YV-pNQ"/>
                             <constraint firstItem="QIu-N0-8oD" firstAttribute="centerX" secondItem="mcj-cd-ACk" secondAttribute="centerX" id="sUu-tK-NJv"/>
                             <constraint firstItem="8sz-jk-tbG" firstAttribute="top" secondItem="dc0-gu-JmI" secondAttribute="bottom" constant="18" id="yFk-Lm-bQs"/>
                             <constraint firstItem="mcj-cd-ACk" firstAttribute="leading" secondItem="7UV-ev-e1P" secondAttribute="leading" id="yjG-VQ-JkM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tdi-oa-ESD"/>
+                                <exclude reference="JQM-An-AKZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Meal details" id="6y1-yA-HPe"/>
                     <connections>
