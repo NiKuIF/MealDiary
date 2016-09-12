@@ -215,6 +215,7 @@ class rootTableViewController: UITableViewController{
             dest_vc.title_text = meal.valueForKey("meal_title") as? String
             dest_vc.description_text = meal.valueForKey("meal_description") as? String
             dest_vc.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!)
+            dest_vc.rating = Int(((meal.valueForKey("meal_rating") as? NSDecimalNumber)?.floatValue)!)
         }
         
     }

@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     
+    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var mealImageView: UIImageView!
@@ -21,6 +22,7 @@ class DetailViewController: UIViewController {
     var title_text: String?
     var description_text: String?
     var image: UIImage?
+    var rating: Int?
     
     var something_changed = false
     
@@ -31,37 +33,70 @@ class DetailViewController: UIViewController {
         titleLabel.text = title_text
         descriptionTextView.text = description_text
         mealImageView.image = image
+        ratingLabel.text = "Rating: \(rating!)"
+        print(ratingLabel.text)
         
         self.titleLabel.userInteractionEnabled = true
         let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editTitleTapped(_:)))
         titleLabel.addGestureRecognizer(titleTapGesture)
         
         self.mealImageView.userInteractionEnabled = true
-        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.takePhotoTapped(_:)))
+        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.takePhotoTapped(_:)))
         mealImageView.addGestureRecognizer(imageTapGesture)
 
+        self.ratingLabel.userInteractionEnabled = true
+        let ratingTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editRatingTapped(_:)))
+        ratingLabel.addGestureRecognizer(ratingTapGesture)
         // Do any additional setup after loading the view.
     }
-
 
     func takePhotoTapped(sender: UITapGestureRecognizer) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
+        
+        
+        
+        let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
         if UIImagePickerController.isSourceTypeAvailable(.Camera)
         {
-            imagePicker.sourceType = .Camera
+            alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+                self.imagePicker.sourceType = .Camera
+                print("camera pressed")
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            }))
         }
-        else
-        {
-            imagePicker.sourceType = .PhotoLibrary
-        }
         
-        imagePicker.allowsEditing = false
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(imagePicker.sourceType)!
+        alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+            self.imagePicker.sourceType = .PhotoLibrary
+            print ("library pressed")
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
+            self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+
+
+    func editRatingTapped(sender: UITapGestureRecognizer)
+    {
+        let alert = UIAlertController(title: " Edit rating", message: "Enter new number from 1 to 10", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveRating(alert.textFields![0].text!)}))
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter new number from 1 to 10:"
+            textField.text = "\(self.rating!)"
+            textField.keyboardType = .DecimalPad
+            textField.clearButtonMode = .WhileEditing
+            
+        })
         
+        self.presentViewController(alert, animated: true, completion:{
+            alert.view.superview?.userInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,6 +118,20 @@ class DetailViewController: UIViewController {
             alert.view.superview?.userInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
         })
+    }
+    
+    func changeActiveRating(new_rating: String)
+    {
+        var tmp_rating: String = new_rating
+        print("change rating to \(tmp_rating)")
+        if(tmp_rating == "")
+        {
+            tmp_rating = "\(self.rating!)"
+        }
+        
+        NewItemContent.rating = Int(tmp_rating)! < 1 || Int(tmp_rating)! > 10 ? 0 : Int(tmp_rating)!
+        ratingLabel.text = "Rating: \(NewItemContent.rating)"
+        something_changed = true
     }
     
     func changeActiveTitleText(new_title: String)
@@ -107,7 +156,6 @@ class DetailViewController: UIViewController {
                 NewItemContent.title = titleLabel.text
                 NewItemContent.description = descriptionTextView.text
                 NewItemContent.image = mealImageView.image
-                NewItemContent.rating = 5
                 let object:NSDictionary = ["index": index!]
                 NSNotificationCenter.defaultCenter().postNotificationName("updateItem", object: object)
             }
