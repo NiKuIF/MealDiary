@@ -13,39 +13,7 @@ class DescriptionViewController: UIViewController {
 
     @IBOutlet weak var description_textview: UITextView!
     
-    @IBAction func save_item(sender: UIBarButtonItem) {
-        sender.enabled = false
-        NewItemContent.description = description_textview.text
-        
-        if(NewItemContent.image == nil)
-        {
-            let alert = UIAlertController(title: "Info", message: "Add an image!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
-            return
-        }
-        if(NewItemContent.title == "" || NewItemContent.title == nil)
-        {
-            let alert = UIAlertController(title: "Info", message: "Add a title!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
-            return
-        }
-        if(description_textview.text == "" || description_textview.text.isEmpty)
-        {
-            let alert = UIAlertController(title: "Info", message: "Add a description!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
-            sender.enabled = true
-            return
-        }
-        
-
-        print("send append item notification")
-        NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: nil)
-        print("going to dismiss add item view")
-        self.dismissViewControllerAnimated(false, completion: nil)
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +44,10 @@ class DescriptionViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+        if(segue.identifier == "add_description")
+        {
+          NewItemContent.description = description_textview.text
+        }
     }
     
 

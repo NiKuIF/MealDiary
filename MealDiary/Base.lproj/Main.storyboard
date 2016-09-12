@@ -82,7 +82,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add a photo" id="MEG-oX-e86">
-                        <barButtonItem key="backBarButtonItem" title="back" id="reO-0d-rxy"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="reO-0d-rxy"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rvn-7V-Qxt">
                             <connections>
                                 <action selector="cancelAddItem:" destination="sbY-zK-YWt" id="RyJ-uM-weM"/>
@@ -142,7 +142,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a title" id="oWi-wi-7cz">
-                        <barButtonItem key="backBarButtonItem" title="back" id="ZPk-xB-chg"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ZPk-xB-chg"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="UaR-XI-h4V">
                             <connections>
                                 <segue destination="PIT-v8-3Sy" kind="show" identifier="add_title" id="T14-SK-ae9"/>
@@ -193,9 +193,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a description" id="PD1-75-hl1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ULB-4u-EVX">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="3YI-ox-JxZ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="ULB-4u-EVX">
                             <connections>
                                 <action selector="save_item:" destination="PIT-v8-3Sy" id="Eby-Tx-rrv"/>
+                                <segue destination="NFB-Ma-PQh" kind="show" identifier="add_description" id="Lrl-74-yy8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -206,6 +208,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nI6-Xm-YOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3020" y="-39"/>
+        </scene>
+        <!--Add a rating-->
+        <scene sceneID="Frq-Gf-2Z9">
+            <objects>
+                <viewController id="NFB-Ma-PQh" customClass="RatingViewController" customModule="MealDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GcK-Qp-cdw"/>
+                        <viewControllerLayoutGuide type="bottom" id="IlZ-GD-xWv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CCp-0k-IJh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kreis" translatesAutoresizingMaskIntoConstraints="NO" id="yjv-2g-TNs">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ftf-8s-YJM">
+                                <rect key="frame" x="20" y="145" width="560" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                    <segment title="6"/>
+                                    <segment title="7"/>
+                                    <segment title="8"/>
+                                    <segment title="9"/>
+                                    <segment title="10"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ftf-8s-YJM" firstAttribute="leading" secondItem="CCp-0k-IJh" secondAttribute="leadingMargin" id="6bK-za-1zA"/>
+                            <constraint firstItem="yjv-2g-TNs" firstAttribute="leading" secondItem="CCp-0k-IJh" secondAttribute="leading" id="6gf-jW-ago"/>
+                            <constraint firstItem="ftf-8s-YJM" firstAttribute="centerX" secondItem="yjv-2g-TNs" secondAttribute="centerX" id="AW3-OF-R8f"/>
+                            <constraint firstItem="yjv-2g-TNs" firstAttribute="top" secondItem="GcK-Qp-cdw" secondAttribute="bottom" id="Co5-oQ-Goi"/>
+                            <constraint firstItem="ftf-8s-YJM" firstAttribute="top" secondItem="GcK-Qp-cdw" secondAttribute="bottom" constant="81" id="JYS-Oj-hI9"/>
+                            <constraint firstAttribute="trailing" secondItem="yjv-2g-TNs" secondAttribute="trailing" id="Qug-Ng-tLl"/>
+                            <constraint firstItem="yjv-2g-TNs" firstAttribute="bottom" secondItem="IlZ-GD-xWv" secondAttribute="top" id="ZLK-Pb-Mof"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add a rating" id="gJJ-SP-la0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PLA-4i-abl">
+                            <connections>
+                                <action selector="saveItem:" destination="NFB-Ma-PQh" id="mvV-6m-f4j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ratingControl" destination="ftf-8s-YJM" id="Mcp-qu-Of2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QTe-Z0-6WL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3828" y="-39"/>
         </scene>
         <!--MealDiary-->
         <scene sceneID="9dL-W9-P4E">
@@ -225,7 +285,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWc-jK-nXs">
-                                            <rect key="frame" x="199" y="8" width="360" height="54"/>
+                                            <rect key="frame" x="112" y="8" width="447" height="54"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="Ks9-YZ-jfu"/>
                                             </constraints>
@@ -243,37 +303,28 @@
                                             </variation>
                                         </label>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gp8-rf-Xl2">
-                                            <rect key="frame" x="203" y="79" width="356" height="2"/>
-                                            <variation key="widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="135" y="79" width="224" height="2"/>
-                                            </variation>
-                                            <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="135" y="79" width="224" height="2"/>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="135" y="79" width="224" height="2"/>
-                                            </variation>
+                                            <rect key="frame" x="112" y="77" width="455" height="2"/>
                                         </progressView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWL-BK-lPW">
-                                            <rect key="frame" x="12" y="12" width="179" height="75.5"/>
+                                            <rect key="frame" x="12" y="8" width="92" height="83"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="179" id="qer-iX-VLw">
-                                                    <variation key="widthClass=compact" constant="119"/>
-                                                </constraint>
+                                                <constraint firstAttribute="width" constant="92" id="Qd0-o1-xnV"/>
+                                                <constraint firstAttribute="height" constant="83" id="xno-zN-Wsc"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="trailing" secondItem="Gp8-rf-Xl2" secondAttribute="trailing" id="CZi-4H-Xzb"/>
-                                        <constraint firstItem="Gp8-rf-Xl2" firstAttribute="top" secondItem="hWc-jK-nXs" secondAttribute="bottom" constant="17" id="Djx-dN-ngb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="pWL-BK-lPW" secondAttribute="bottom" constant="4" id="HYh-2F-zEq"/>
-                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="leading" secondItem="eSg-Vi-gu1" secondAttribute="leadingMargin" constant="4" id="IKi-RK-og8"/>
-                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="leading" secondItem="pWL-BK-lPW" secondAttribute="trailing" constant="8" symbolic="YES" id="Z8o-5a-eJ1"/>
-                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="leading" secondItem="Gp8-rf-Xl2" secondAttribute="leading" id="beP-DX-PzM"/>
-                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="trailing" secondItem="eSg-Vi-gu1" secondAttribute="trailingMargin" id="da2-Pv-Dro"/>
-                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="top" secondItem="eSg-Vi-gu1" secondAttribute="topMargin" id="sg5-1g-yni"/>
-                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="top" secondItem="eSg-Vi-gu1" secondAttribute="topMargin" constant="4" id="vw4-ih-fBy"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="top" secondItem="pWL-BK-lPW" secondAttribute="top" id="0Iq-0n-02c"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pWL-BK-lPW" secondAttribute="bottom" id="DHS-rZ-N65"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gp8-rf-Xl2" secondAttribute="trailing" id="Hic-6R-43X"/>
+                                        <constraint firstItem="Gp8-rf-Xl2" firstAttribute="top" secondItem="hWc-jK-nXs" secondAttribute="bottom" constant="13" id="Pyk-nc-AyS"/>
+                                        <constraint firstItem="Gp8-rf-Xl2" firstAttribute="leading" secondItem="hWc-jK-nXs" secondAttribute="leading" id="TBt-QK-PNB"/>
+                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="bottom" secondItem="eSg-Vi-gu1" secondAttribute="bottomMargin" id="ZWh-0D-w8G"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="trailing" secondItem="eSg-Vi-gu1" secondAttribute="trailingMargin" id="jCD-Eb-TEg"/>
+                                        <constraint firstItem="hWc-jK-nXs" firstAttribute="leading" secondItem="pWL-BK-lPW" secondAttribute="trailing" constant="8" symbolic="YES" id="l3B-aN-QWb"/>
+                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="top" secondItem="eSg-Vi-gu1" secondAttribute="topMargin" id="m3k-oT-nhy"/>
+                                        <constraint firstItem="pWL-BK-lPW" firstAttribute="leading" secondItem="eSg-Vi-gu1" secondAttribute="leadingMargin" constant="4" id="tfe-89-RJf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
