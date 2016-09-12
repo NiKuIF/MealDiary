@@ -41,7 +41,11 @@ class DetailViewController: UIViewController {
         titleLabel.addGestureRecognizer(titleTapGesture)
         
         self.mealImageView.userInteractionEnabled = true
-        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.takePhotoTapped(_:)))
+        let imageLongTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.takePhotoTapped(_:)))
+        mealImageView.addGestureRecognizer(imageLongTapGesture)
+        
+        
+        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewPhotoTapped(_:)))
         mealImageView.addGestureRecognizer(imageTapGesture)
 
         self.ratingLabel.userInteractionEnabled = true
@@ -50,12 +54,9 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    func takePhotoTapped(sender: UITapGestureRecognizer) {
+    func takePhotoTapped(sender: UILongPressGestureRecognizer) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        
-        
-        
         
         let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
         if UIImagePickerController.isSourceTypeAvailable(.Camera)
@@ -80,7 +81,23 @@ class DetailViewController: UIViewController {
         
     }
 
-
+    func viewPhotoTapped(sender: UITapGestureRecognizer)
+    {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = self.view.frame
+        newImageView.backgroundColor = .blackColor()
+        newImageView.contentMode = .ScaleAspectFit
+        newImageView.userInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+    }
+    
+    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+        sender.view?.removeFromSuperview()
+    }
+    
     func editRatingTapped(sender: UITapGestureRecognizer)
     {
         let alert = UIAlertController(title: " Edit rating", message: "Enter new number from 1 to 10", preferredStyle: UIAlertControllerStyle.Alert)
@@ -93,10 +110,7 @@ class DetailViewController: UIViewController {
             
         })
         
-        self.presentViewController(alert, animated: true, completion:{
-            alert.view.superview?.userInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-        })
+        self.presentViewController(alert, animated: true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,10 +128,7 @@ class DetailViewController: UIViewController {
             
         })
         
-        self.presentViewController(alert, animated: true, completion:{
-            alert.view.superview?.userInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-        })
+        self.presentViewController(alert, animated: true, completion:nil)
     }
     
     func changeActiveRating(new_rating: String)
@@ -129,8 +140,8 @@ class DetailViewController: UIViewController {
             tmp_rating = "\(self.rating!)"
         }
         
-        NewItemContent.rating = Int(tmp_rating)! < 1 || Int(tmp_rating)! > 10 ? 0 : Int(tmp_rating)!
-        ratingLabel.text = "Rating: \(NewItemContent.rating)"
+        rating = Int(tmp_rating)! < 1 || Int(tmp_rating)! > 10 ? 0 : Int(tmp_rating)!
+        ratingLabel.text = "Rating: \(rating!)"
         something_changed = true
     }
     
@@ -141,11 +152,7 @@ class DetailViewController: UIViewController {
         something_changed = true
     }
     
-    func alertControllerBackgroundTapped()
-    {
-        print("background tap")
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+ 
     
     override func willMoveToParentViewController(parent: UIViewController?) {
         super.willMoveToParentViewController(parent)
@@ -156,6 +163,7 @@ class DetailViewController: UIViewController {
                 NewItemContent.title = titleLabel.text
                 NewItemContent.description = descriptionTextView.text
                 NewItemContent.image = mealImageView.image
+                NewItemContent.rating = rating!
                 let object:NSDictionary = ["index": index!]
                 NSNotificationCenter.defaultCenter().postNotificationName("updateItem", object: object)
             }

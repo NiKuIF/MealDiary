@@ -23,9 +23,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MealDiary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofc-Oh-6Oo">
                                 <rect key="frame" x="200" y="250" width="201.5" height="57"/>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="40"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.18494784698053879" green="0.16926741509333398" blue="0.18743990384615383" alpha="0.5551185344827585" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.92780448717948705" green="0.92780448717948705" blue="0.92780448717948705" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.69098557692307694" green="0.63330287658484408" blue="0.66878417513555966" alpha="0.89275323275862073" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="2" height="-2"/>
                             </label>
                         </subviews>
