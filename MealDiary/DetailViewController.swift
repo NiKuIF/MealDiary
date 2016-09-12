@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIScrollViewDelegate {
 
     
     @IBOutlet weak var ratingLabel: UILabel!
@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var mealImageView: UIImageView!
     
+    var newImageView: UIImageView!
     var imagePicker: UIImagePickerController!
     
     var index : Int?
@@ -84,15 +85,28 @@ class DetailViewController: UIViewController {
     func viewPhotoTapped(sender: UITapGestureRecognizer)
     {
         let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
+        newImageView = UIImageView(image: imageView.image)
         newImageView.frame = self.view.frame
         newImageView.backgroundColor = .blackColor()
         newImageView.contentMode = .ScaleAspectFit
         newImageView.userInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
+        let scrollView = UIScrollView(frame: self.view.frame)
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        scrollView.userInteractionEnabled = true
+        scrollView.backgroundColor = .blackColor()
+        scrollView.addSubview(newImageView)
+        scrollView.delegate = self
+      
+        scrollView.addGestureRecognizer(tap)
+        self.view.addSubview(scrollView)
     }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.newImageView
+    }
+
     
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {
         sender.view?.removeFromSuperview()
