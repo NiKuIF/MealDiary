@@ -407,7 +407,13 @@
                             <constraint firstItem="dc0-gu-JmI" firstAttribute="trailing" secondItem="8sz-jk-tbG" secondAttribute="trailing" id="zUu-Jj-sH5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meal details" id="6y1-yA-HPe"/>
+                    <navigationItem key="navigationItem" title="Meal details" id="6y1-yA-HPe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="9VL-29-XOe">
+                            <connections>
+                                <action selector="share_detail_item:" destination="6ja-t8-C0G" id="BoD-v9-V9e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionTextView" destination="dc0-gu-JmI" id="afa-Ca-9SJ"/>
                         <outlet property="mealImageView" destination="8sz-jk-tbG" id="g2W-YZ-QbF"/>

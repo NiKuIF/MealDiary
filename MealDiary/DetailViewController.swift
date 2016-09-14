@@ -56,6 +56,23 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func share_detail_item(_ sender: UIBarButtonItem)
+    {
+        //Create the UIImage
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        // set up activity view controller
+        let objectsToShare: [AnyObject] = [ image! ]
+        let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
     func takePhotoTapped(_ sender: UILongPressGestureRecognizer) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
