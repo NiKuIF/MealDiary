@@ -13,45 +13,45 @@ class RatingViewController: UIViewController {
 
     @IBOutlet weak var ratingControl: UISegmentedControl!
     
-    @IBAction func saveItem(sender: UIBarButtonItem) {
-        sender.enabled = false
+    @IBAction func saveItem(_ sender: UIBarButtonItem) {
+        sender.isEnabled = false
         NewItemContent.rating = ratingControl.selectedSegmentIndex + 1
         
         if(NewItemContent.image == nil)
         {
-            let alert = UIAlertController(title: "Info", message: "Add an image!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Info", message: "Add an image!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in }))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         if(NewItemContent.title == "" || NewItemContent.title == nil)
         {
-            let alert = UIAlertController(title: "Info", message: "Add a title!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Info", message: "Add a title!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in }))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         if(NewItemContent.description == "" || NewItemContent.description == nil)
         {
-            let alert = UIAlertController(title: "Info", message: "Add a description!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Info", message: "Add a description!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in }))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         //if rating is not set -> alert and sender enabled is trues
         if NewItemContent.rating == 0
         {
-            let alert = UIAlertController(title: "Info", message: "Add a rating!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in }))
-            self.presentViewController(alert, animated: true, completion: nil)
-            sender.enabled = true
+            let alert = UIAlertController(title: "Info", message: "Add a rating!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in }))
+            self.present(alert, animated: true, completion: nil)
+            sender.isEnabled = true
             return
         }
         
         print("send append item notification")
-        NSNotificationCenter.defaultCenter().postNotificationName("appendItem", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "appendItem"), object: nil)
         print("going to dismiss add item view")
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
 
     }
     
@@ -62,8 +62,8 @@ class RatingViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        super.willMoveToParentViewController(parent)
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
         if parent == nil {
            NewItemContent.rating = ratingControl.selectedSegmentIndex + 1
         }
@@ -80,7 +80,7 @@ class RatingViewController: UIViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         

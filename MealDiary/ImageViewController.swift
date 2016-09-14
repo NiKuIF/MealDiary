@@ -15,46 +15,46 @@ class ImageViewController: UIViewController {
     
     var imagePicker: UIImagePickerController!
     
-    @IBAction func cancelAddItem(sender: UIBarButtonItem) {
+    @IBAction func cancelAddItem(_ sender: UIBarButtonItem) {
         NewItemContent.clear()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.image.userInteractionEnabled = true
+        self.image.isUserInteractionEnabled = true
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.takePhotoTapped(_:)))
         image.addGestureRecognizer(imageTapGesture)
         // Do any additional setup after loading the view.
     }
-    func takePhotoTapped(sender: UITapGestureRecognizer) {
+    func takePhotoTapped(_ sender: UITapGestureRecognizer) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
         
         
         
-        let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
-        if UIImagePickerController.isSourceTypeAvailable(.Camera)
+        let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .alert)
+        if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
-            alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-                self.imagePicker.sourceType = .Camera
+            alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+                self.imagePicker.sourceType = .camera
                 print("camera pressed")
                 self.imagePicker.allowsEditing = false
-                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
-                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
+                self.present(self.imagePicker, animated: true, completion: nil)
             }))
         }
       
-        alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-                self.imagePicker.sourceType = .PhotoLibrary
+        alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+                self.imagePicker.sourceType = .photoLibrary
                 print ("library pressed")
                 self.imagePicker.allowsEditing = false
-                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
-                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
+                self.present(self.imagePicker, animated: true, completion: nil)
             }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     
     }
     
@@ -68,7 +68,7 @@ class ImageViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
@@ -80,18 +80,18 @@ class ImageViewController: UIViewController {
 
 extension ImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
         print("user cancled the camera/ photo library")
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //let mediatype = info[UIImagePickerControllerMediaType] as! String
         
       
         self.imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         NewItemContent.image = self.imageView.image
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

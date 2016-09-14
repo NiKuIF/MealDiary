@@ -15,7 +15,7 @@ import CoreData
 extension Meals {
 
     @NSManaged var meal_description: String?
-    @NSManaged var meal_image: NSData?
+    @NSManaged var meal_image: Data?
     @NSManaged var meal_title: String?
     @NSManaged var meal_rating: NSDecimalNumber?
 

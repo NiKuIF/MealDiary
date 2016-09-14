@@ -38,11 +38,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         ratingLabel.text = "Rating: \(rating!)"
         print(ratingLabel.text)
         
-        self.titleLabel.userInteractionEnabled = true
+        self.titleLabel.isUserInteractionEnabled = true
         let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editTitleTapped(_:)))
         titleLabel.addGestureRecognizer(titleTapGesture)
         
-        self.mealImageView.userInteractionEnabled = true
+        self.mealImageView.isUserInteractionEnabled = true
         let imageLongTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.takePhotoTapped(_:)))
         mealImageView.addGestureRecognizer(imageLongTapGesture)
         
@@ -50,55 +50,55 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewPhotoTapped(_:)))
         mealImageView.addGestureRecognizer(imageTapGesture)
 
-        self.ratingLabel.userInteractionEnabled = true
+        self.ratingLabel.isUserInteractionEnabled = true
         let ratingTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.editRatingTapped(_:)))
         ratingLabel.addGestureRecognizer(ratingTapGesture)
         // Do any additional setup after loading the view.
     }
 
-    func takePhotoTapped(sender: UILongPressGestureRecognizer) {
+    func takePhotoTapped(_ sender: UILongPressGestureRecognizer) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .Alert)
-        if UIImagePickerController.isSourceTypeAvailable(.Camera)
+        let alert = UIAlertController(title: "Take image", message: "Choose preferred one", preferredStyle: .alert)
+        if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
-            alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-                self.imagePicker.sourceType = .Camera
+            alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+                self.imagePicker.sourceType = .camera
                 print("camera pressed")
                 self.imagePicker.allowsEditing = false
-                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
-                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
+                self.present(self.imagePicker, animated: true, completion: nil)
             }))
         }
         
-        alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-            self.imagePicker.sourceType = .PhotoLibrary
+        alert.addAction(UIAlertAction(title: "Library", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            self.imagePicker.sourceType = .photoLibrary
             print ("library pressed")
             self.imagePicker.allowsEditing = false
-            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(self.imagePicker.sourceType)!
-            self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
+            self.present(self.imagePicker, animated: true, completion: nil)
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
 
-    func viewPhotoTapped(sender: UITapGestureRecognizer)
+    func viewPhotoTapped(_ sender: UITapGestureRecognizer)
     {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         let imageView = sender.view as! UIImageView
         newImageView = UIImageView(image: imageView.image)
         newImageView.frame = self.view.frame
-        newImageView.backgroundColor = .blackColor()
-        newImageView.contentMode = .ScaleAspectFit
-        newImageView.userInteractionEnabled = true
+        newImageView.backgroundColor = UIColor.black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
         
         let scrollView = UIScrollView(frame: self.view.frame)
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 6.0
-        scrollView.userInteractionEnabled = true
-        scrollView.backgroundColor = .blackColor()
+        scrollView.isUserInteractionEnabled = true
+        scrollView.backgroundColor = UIColor.black
         scrollView.addSubview(newImageView)
         scrollView.delegate = self
         
@@ -107,29 +107,29 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(scrollView)
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.newImageView
     }
 
     
-    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         sender.view?.removeFromSuperview()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func editRatingTapped(sender: UITapGestureRecognizer)
+    func editRatingTapped(_ sender: UITapGestureRecognizer)
     {
-        let alert = UIAlertController(title: " Edit rating", message: "Enter new number from 1 to 10", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveRating(alert.textFields![0].text!)}))
-        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+        let alert = UIAlertController(title: " Edit rating", message: "Enter new number from 1 to 10", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.changeActiveRating(alert.textFields![0].text!)}))
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.placeholder = "Enter new number from 1 to 10:"
             textField.text = "\(self.rating!)"
-            textField.keyboardType = .DecimalPad
-            textField.clearButtonMode = .WhileEditing
+            textField.keyboardType = .decimalPad
+            textField.clearButtonMode = .whileEditing
             
         })
         
-        self.presentViewController(alert, animated: true, completion:nil)
+        self.present(alert, animated: true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,20 +137,20 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func editTitleTapped(sender: UITapGestureRecognizer) {
-        let alert = UIAlertController(title: " Edit title", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in self.changeActiveTitleText(alert.textFields![0].text!)}))
-        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+    func editTitleTapped(_ sender: UITapGestureRecognizer) {
+        let alert = UIAlertController(title: " Edit title", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.changeActiveTitleText(alert.textFields![0].text!)}))
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.placeholder = "Enter new title:"
             textField.text = self.titleLabel.text
-            textField.clearButtonMode = .WhileEditing
+            textField.clearButtonMode = .whileEditing
             
         })
         
-        self.presentViewController(alert, animated: true, completion:nil)
+        self.present(alert, animated: true, completion:nil)
     }
     
-    func changeActiveRating(new_rating: String)
+    func changeActiveRating(_ new_rating: String)
     {
         var tmp_rating: String = new_rating
         print("change rating to \(tmp_rating)")
@@ -159,12 +159,12 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             tmp_rating = "\(self.rating!)"
         }
         
-        rating = Int(tmp_rating)! < 1 || Int(tmp_rating)! > 10 ? 0 : Int(tmp_rating)!
+        rating = Int(tmp_rating)! < 1 || Int(tmp_rating)! > 10 ? self.rating! : Int(tmp_rating)!
         ratingLabel.text = "Rating: \(rating!)"
         something_changed = true
     }
     
-    func changeActiveTitleText(new_title: String)
+    func changeActiveTitleText(_ new_title: String)
     {
         print("change title to : \(new_title)")
         titleLabel.text = new_title
@@ -173,8 +173,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
  
     
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        super.willMoveToParentViewController(parent)
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
         if parent == nil {
             if(something_changed || descriptionTextView.text != description_text)
             {
@@ -184,13 +184,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                 NewItemContent.image = mealImageView.image
                 NewItemContent.rating = rating!
                 let object:NSDictionary = ["index": index!]
-                NSNotificationCenter.defaultCenter().postNotificationName("updateItem", object: object)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "updateItem"), object: object)
             }
 
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch")
         view.endEditing(true)
     }
@@ -211,18 +211,18 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 
 extension DetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
         print("user cnacled the camera/ photo library")
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //let mediatype = info[UIImagePickerControllerMediaType] as! String
         
         
         self.mealImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         something_changed = true
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
