@@ -13,11 +13,20 @@ class rootTableViewController: UITableViewController{
     
     var meals = [NSManagedObject]()
     var Image : String = String("stefan.jpg")
+    var appDelegate: AppDelegate?
+    var managedContext: NSManagedObjectContext?
     
     @IBOutlet var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //1
+        appDelegate =
+            UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        managedContext = appDelegate!.managedObjectContext
+        
         let background = UIImageView(image: UIImage(named: "spies"))
     
         background.alpha = 1
@@ -31,19 +40,12 @@ class rootTableViewController: UITableViewController{
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //1
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        //2
         let fetchRequest = NSFetchRequest(entityName: "Meals")
         
         //3
         do {
             let results =
-                try managedContext.executeFetchRequest(fetchRequest)
+                try managedContext!.executeFetchRequest(fetchRequest)
             meals = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -61,14 +63,10 @@ class rootTableViewController: UITableViewController{
         NewItemContent.clear()
         let imageData = NSData(data: UIImageJPEGRepresentation(image!, 1.0)!)
         
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
         
         //2
         let entity =  NSEntityDescription.entityForName("Meals",
-                                                        inManagedObjectContext:managedContext)
+                                                        inManagedObjectContext:managedContext!)
         
         let meal = NSManagedObject(entity: entity!,
                                    insertIntoManagedObjectContext: managedContext)
@@ -80,7 +78,7 @@ class rootTableViewController: UITableViewController{
         meal.setValue(rating, forKey: "meal_rating")
         //4
         do {
-            try managedContext.save()
+            try managedContext!.save()
             //5
             meals.append(meal)
             //NewItemContent.clear()
@@ -133,8 +131,7 @@ class rootTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
 
         let meal = meals[indexPath.row]
-       /* cell.textLabel?.text = meal.valueForKey("meal_title") as? String
-        cell.imageView?.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);*/
+    
         cell.ImageView.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
         cell.title.text = meal.valueForKey("meal_title") as? String
         cell.rating.progress = ((meal.valueForKey("meal_rating") as? NSDecimalNumber)?.floatValue)! / 10
