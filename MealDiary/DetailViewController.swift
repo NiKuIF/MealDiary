@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var mealImageView: UIImageView!
+
     
     var newImageView: UIImageView!
     var imagePicker: UIImagePickerController!
@@ -84,6 +85,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 
     func viewPhotoTapped(sender: UITapGestureRecognizer)
     {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         let imageView = sender.view as! UIImageView
         newImageView = UIImageView(image: imageView.image)
         newImageView.frame = self.view.frame
@@ -91,13 +93,15 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         newImageView.contentMode = .ScaleAspectFit
         newImageView.userInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
+        
         let scrollView = UIScrollView(frame: self.view.frame)
-        scrollView.minimumZoomScale = 1.0
+        scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 6.0
         scrollView.userInteractionEnabled = true
         scrollView.backgroundColor = .blackColor()
         scrollView.addSubview(newImageView)
         scrollView.delegate = self
+        
       
         scrollView.addGestureRecognizer(tap)
         self.view.addSubview(scrollView)
@@ -110,6 +114,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {
         sender.view?.removeFromSuperview()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func editRatingTapped(sender: UITapGestureRecognizer)

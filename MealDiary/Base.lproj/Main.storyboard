@@ -372,7 +372,7 @@
                                     <fragment content="Label">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                            <font key="NSFont" size="24" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -417,8 +417,8 @@
                                 </variation>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrg-9Z-5eE">
-                                <rect key="frame" x="20" y="121.5" width="560" height="14.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <rect key="frame" x="20" y="120" width="560" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -455,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpF-EA-hyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2178" y="894.75"/>
+            <point key="canvasLocation" x="2178" y="894"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQB-Vc-pCg">
