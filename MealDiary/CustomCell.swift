@@ -12,7 +12,7 @@ import UIKit
 class CustomCell : UITableViewCell{
     
     
-    @IBOutlet weak var ImageView: UIImageView!
+    //@IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var rating: UIProgressView!
     

@@ -132,16 +132,19 @@ class rootTableViewController: UITableViewController{
 
         let meal = meals[indexPath.row]
     
-        cell.ImageView.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
+        //cell.ImageView.image = UIImage(data: (meal.valueForKey("meal_image") as? NSData)!);
         cell.title.text = meal.valueForKey("meal_title") as? String
         cell.rating.progress = ((meal.valueForKey("meal_rating") as? NSDecimalNumber)?.floatValue)! / 10
         
-        let background = UIView()
-        background.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.6)
-        cell.selectedBackgroundView = background
-        let background2 = UIView()
-        background2.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        cell.backgroundView = background2
+        let background_selected = UIView()
+        background_selected.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.6)
+        cell.selectedBackgroundView = background_selected
+        /*let background = UIView()
+        background.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)*/
+        let backgroundView = UIImageView(image: UIImage(data: (meal.valueForKey("meal_image") as? NSData)!))
+        backgroundView.contentMode = .ScaleAspectFill
+        cell.backgroundView = backgroundView//background
+        
         return cell
     }
     
